@@ -87,7 +87,8 @@ export class ProductsService {
         }
 
         let counter = 0;
-        let uploadedFiles = Number(product.images_to_update[counter]); //Cuenta cuantos archivos se han subido a Firebase
+        let imageToUpdateList = JSON.parse(product.images_to_update);
+        let uploadedFiles = imageToUpdateList[counter]; //Cuenta cuantos archivos se han subido a Firebase
 
         const updateProduct = await this.update(id, product);
 

@@ -14,7 +14,7 @@ import { Rol } from 'src/roles/rol.entity';
   JwtModule.register({
     global: true,
     secret: jwtConstants.secret,
-    signOptions: { expiresIn: '300s' },
+    signOptions: { expiresIn: '1300s' },
   }),
   ],
   providers: [AuthService,RolesService, JwtStrategy],
