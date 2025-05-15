@@ -40,6 +40,13 @@ export class AddressController {
         return this.addressService.update(id, address);
     }
 
+    @HasRoles(JwtRole.ADMIN)
+    @UseGuards(JwtAuthGuard, JwtRolesGuard)
+    @Delete(':id')
+    delete(@Param('id', ParseIntPipe) id: number) {
+        return this.addressService.delete(id);
+    }
+
 
 
 }
