@@ -12,7 +12,7 @@ export class AddressController {
     
     constructor(private addressService: AddressService) {}
 
-    @HasRoles(JwtRole.ADMIN)
+    @HasRoles(JwtRole.ADMIN, JwtRole.CLIENT)
     @UseGuards(JwtAuthGuard, JwtRolesGuard)
     @Post() // http:172.27.44.131:3000/categories-> POST
     create(@Body() address: CreateAddressDto) {
@@ -33,14 +33,14 @@ export class AddressController {
         return this.addressService.findByUser(id_user);
     }
 
-    @HasRoles(JwtRole.ADMIN)
+    @HasRoles(JwtRole.ADMIN, JwtRole.CLIENT)
     @UseGuards(JwtAuthGuard, JwtRolesGuard)
     @Put(':id')
     update(@Param('id', ParseIntPipe) id: number, @Body() address: UpdateAddressDto) {
         return this.addressService.update(id, address);
     }
 
-    @HasRoles(JwtRole.ADMIN)
+    @HasRoles(JwtRole.ADMIN, JwtRole.CLIENT)
     @UseGuards(JwtAuthGuard, JwtRolesGuard)
     @Delete(':id')
     delete(@Param('id', ParseIntPipe) id: number) {
