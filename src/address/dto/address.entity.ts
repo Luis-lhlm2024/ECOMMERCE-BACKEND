@@ -12,6 +12,9 @@ export class Address {
 
     @Column()
     neighborhood: string;
+
+    @Column()
+    id_user: number;
     
     @Column({type: 'datetime', default: () => 'CURRENT_TIMESTAMP'})
     created_at:Date;
